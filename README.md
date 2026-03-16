@@ -189,10 +189,11 @@ python game_velha.py
 
 
 
-## INFORMAÇÕES DO DESENVOLVEDOR
+#INFORMAÇÕES DO DESENVOLVEDOR
 
 - DESENVOLVEDOR: JULIAN ANTHONY MOREIRA CAMPEÃO
 - CONTATO
 TELEFONE/WHATSAPP: (41) 99751-9686
 E-MAIL: campeaojulian@gmail.com
 Para mais informações acesse o meu Linkedin: https://www.linkedin.com/in/julian-campeao-5422b2347/
+#
