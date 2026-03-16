@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Jogo da Velha com IA</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .casa {
+            width: 120px;
+            height: 120px;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Jogo da Velha com IA</h1>
+
+    <div class="tabuleiro" id="tabuleiro"></div>
+
+    <button onclick="reiniciar()">Reiniciar partida</button>
+
+    <script>
+
+        let tabuleiro = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        let jogoAtivo = true
+
+        function desenhar() {
+
+            let t = document.getElementById("tabuleiro")
+            t.innerHTML = ""
+
+            for (let i = 0; i < 9; i++) {
+
+                let b = document.createElement("button")
+                b.className = "casa"
+
+                if (tabuleiro[i] == 1) b.innerHTML = "X"
+                if (tabuleiro[i] == 2) b.innerHTML = "O"
+
+                b.onclick = () => jogar(i)
+
+                t.appendChild(b)
+
+            }
+
+        }
+
+        function jogar(pos) {
+
+            if (!jogoAtivo) return
+
+            if (tabuleiro[pos] != 0) return
+
+            tabuleiro[pos] = 2
+
+            fetch("/jogar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ tabuleiro: tabuleiro })
+            })
+                .then(r => r.json())
+                .then(data => {
+
+                    tabuleiro = data.tabuleiro
+
+                    desenhar()
+
+                    if (data.vencedor) {
+
+                        jogoAtivo = false
+
+                        if (data.vencedor == "Empate") {
+                            alert("Empate!")
+                        } else {
+                            alert(data.vencedor + " venceu!")
+                        }
+
+                    }
+
+                })
+
+        }
+
+        function reiniciar() {
+
+            tabuleiro = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            jogoAtivo = true
+            desenhar()
+
+        }
+
+        desenhar()
+
+    </script>
+
+    <h3>Made by Julian Campeão - 2026</h3>
+    <h3>Link do GitHub: https://github.com/JulianCampeao</h3>
+    <h3>Link do Linkedin: https://www.linkedin.com/in/julian-campeao-5422b2347/</h3>
+    
+</body>
+
+</html>
