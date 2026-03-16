@@ -11,19 +11,14 @@ Jogo da Velha em Python com interface web em Flask e HTML.  Possui venv com depe
     ├── game_velha.py
     │
     ├── templates/
-    │   └── index.html
-    │
-    └── venv/
-        ├── Scripts/
-        ├── Lib/
-        └── pyvenv.cfg
+        └── index.html
+
 
 *   Jogo_da_Velha: Pasta Raiz do Projeto
 *   game_velha.py: lógica principal do jogo, IA (Algorítimo Minimax + Algorítimo RandomForest) e Flask
 *   tic_tac_toe_dataset.csv: Dados para Treinamento da IA
 *   requirements.txt: Dependências do projeto **Bibliotécas usadas no Projeto
 *   templates/: Pasta com arquivos HTML -> index.html, usados pelo Flask para a Intergração Web
-*   venv/: Ambiente virtual isolado do projeto
 
 
 # Resumindo as Principais Funcionalidades e Funcionamento do Projeto - game_velha.py
